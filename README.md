@@ -2,7 +2,7 @@
 
 Use this repository to learn how to establish a Python connection against Microsoft SQL Server with the help of `uv`. 
 
-You need to have uv installed on your machine (see [this repo](https://github.com/kirenz/uv-setup) for installation instructions).
+You need to have uv installed on your machine (see [this repo](https://github.com/kirenz/uv-setup/blob/main/docs/en/uv-installation.md) for installation instructions).
 
 ## Step-by-step instructions
 
@@ -39,6 +39,9 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
    ```bash
    code .
    ```
+   
+   You can also open the folder manually from within VS Code.
+
    Open the new `.env` file and replace the placeholder values with the SQL Server hostname, database, username, password, driver, and any TLS requirements provided by your instructor.
 
 5. Test the SQL example script (you may use the integrated terminal in VS Code or your previous terminal window)  
@@ -48,13 +51,15 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
    ```
    The script prints the SQL Server version and the top rows of the sample query if the connection succeeds.
 
-6. Explore further  
+6. Show the database schema  
 
-   Update the SQL statement inside `sql_example.py` to work with tables you have access to, then rerun the command above.
+   If you already connected to SQL Server with the VS Code **SQL Server** extension (see [this guide](https://code.visualstudio.com/docs/azure/data-sql-server)), open `sql/show_schema.sql`, click the **Run** button (▶️) in the editor toolbar and select your database connection. 
+   
+   The extension executes the script and displays every table, column, data type, and nullability flag in the Results panel.
 
-7. Show the database schema  
+7. Explore further
 
-   If you already connected to SQL Server with the VS Code **SQL Server** extension, open `sql/show_schema.sql`, click the **Run** button (▶️) in the editor toolbar and select your database connection. The extension executes the script and displays every table, column, data type, and nullability flag in the Results panel.
+   Update the SQL statement inside `sql_example.py` to work with tables you have access to, then rerun the command above.   
 
 ## Files
 
