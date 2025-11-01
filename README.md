@@ -32,18 +32,29 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
    ```bash
    cp .env.example .env
    ```
+
+
+4. Open VS Code in the current folder
+
+   ```bash
+   code .
+   ```
    Open the new `.env` file and replace the placeholder values with the SQL Server hostname, database, username, password, driver, and any TLS requirements provided by your instructor.
 
-4. Test the SQL example script  
+5. Test the SQL example script (you may use the integrated terminal in VS Code or your previous terminal window)  
 
    ```bash
    uv run python sql_example.py
    ```
    The script prints the SQL Server version and the top rows of the sample query if the connection succeeds.
 
-5. Explore further  
+6. Explore further  
 
    Update the SQL statement inside `sql_example.py` to work with tables you have access to, then rerun the command above.
+
+7. Show the database schema  
+
+   If you already connected to SQL Server with the VS Code **SQL Server** extension, open `sql/show_schema.sql`, click the **Run** button (▶️) in the editor toolbar and select your database connection. The extension executes the script and displays every table, column, data type, and nullability flag in the Results panel.
 
 ## Files
 
@@ -52,6 +63,8 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
 - `.env.example` – template with placeholders for your connection parameters. 
 
 - `pyproject.toml` – dependency definition for `uv sync`. Don't edit this file directly; use `uv add <package>` to add new packages.
+
+- `sql/show_schema.sql` – SQL script that retrieves the database schema information from the system catalog views.
 
 ## Python packages used
 
