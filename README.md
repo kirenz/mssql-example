@@ -12,7 +12,7 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
 1. Clone the repository  
 
    ```bash
-   git clone https://github.com/jankirenz/mssql-example.git
+   git clone https://github.com/kirenz/mssql-example.git
    ```
    Change into the repository folder
    ```bash
