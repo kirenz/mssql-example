@@ -2,11 +2,11 @@
 
 Use this repository to learn how to establish a Python connection against Microsoft SQL Server with the help of `uv`. 
 
-You need to have uv installed on your machine.
+You need to have uv installed on your machine (see [this repo](https://github.com/kirenz/uv-setup) for installation instructions).
 
 ## Step-by-step instructions
 
-If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git Bash** (installed with Git). 
+If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git Bash**. 
 
 
 1. Clone the repository  
@@ -27,7 +27,7 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
 
    This installs all required packages in an isolated environment managed by `uv`.
 
-3. Prepare your environment variables  
+3. Prepare your environment variables (this will copy the example file and create a new `.env` file)  
 
    ```bash
    cp .env.example .env
@@ -49,7 +49,7 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
 
 - `sql_example.py` – minimal script that loads environment variables, builds the ODBC connection string, and executes a sample query with `pandas`.
 
-- `.env.example` – template with placeholders for your connection parameters. Copy it to `.env` before running the script.
+- `.env.example` – template with placeholders for your connection parameters. 
 
 - `pyproject.toml` – dependency definition for `uv sync`. Don't edit this file directly; use `uv add <package>` to add new packages.
 
