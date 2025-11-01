@@ -1,0 +1,12 @@
+[project]
+name = "mssql-example"
+version = "0.1.0"
+description = "Minimal runnable example for connecting to Microsoft SQL Server with Python."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.2",
+    "sqlalchemy>=2.0",
+    "python-dotenv>=1.0",
+    "pyodbc>=5.1",
+]
