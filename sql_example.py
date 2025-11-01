@@ -1,18 +1,19 @@
-from __future__ import annotations
-
-"""Small example that connects to SQL Server and prints the first rows of a table."""
-
+"""Example that connects to SQL Server and prints the first rows of a table."""
+# Python imports
 import os
 import urllib.parse
-
 import pandas as pd
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 
-# Load variables defined in a nearby .env file (handy during local development)
+
+# --- CONFIGURATION SECTION  ---
+
+# Load variables defined in a .env file 
 load_dotenv()
 
-# Pull individual settings from the environment. These keys must exist in your .env file.
+# Pull individual settings from the environment. 
+# These keys must exist in your .env file.
 SERVER = os.getenv("MSSQL_SERVER")
 DATABASE = os.getenv("MSSQL_DATABASE")
 USERNAME = os.getenv("MSSQL_USERNAME")
@@ -37,10 +38,13 @@ params = urllib.parse.quote_plus(
 # create_engine builds a SQLAlchemy Engine object that manages the database connection.
 engine = create_engine(f"mssql+pyodbc:///?odbc_connect={params}")
 
-# Simple SQL statement we can run to verify everything is working
+
+# --- SQL QUERY SECTION  ---
+
+# Example SQL statement 
 SAMPLE_QUERY = text(
     """
-    SELECT TOP (10)
+    SELECT TOP (3)
            ID_Product,
            Material_Description,
            Product_Category,
@@ -50,13 +54,15 @@ SAMPLE_QUERY = text(
     """
 )
 
+# --- EXECUTION SECTION  ---
+
 with engine.connect() as connection:
     # Run a quick check to confirm we can talk to the server
     version = connection.execute(text("SELECT @@VERSION AS version"))
     print("Connection successful!")
     print("SQL Server version:", version.scalar())
 
-    # Pull a small sample dataset into a pandas DataFrame
+    # Pull the dataset into a pandas DataFrame
     df = pd.read_sql(SAMPLE_QUERY, connection)
-    print("\nSample data:")
+    print("\n Data:")
     print(df)

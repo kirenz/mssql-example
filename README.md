@@ -2,7 +2,10 @@
 
 Use this repository to learn how to establish a Python connection against Microsoft SQL Server with the help of `uv`. 
 
-You need to have uv installed on your machine (see [this repo](https://github.com/kirenz/uv-setup/blob/main/docs/en/uv-installation.md) for installation instructions).
+> [!IMPORTANT]
+> You need to have uv installed on your machine (go to [this repo](https://github.com/kirenz/uv-setup) for installation instructions).
+
+
 
 ## Step-by-step instructions
 
