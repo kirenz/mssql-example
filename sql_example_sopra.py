@@ -21,9 +21,7 @@ DATABASE = os.getenv("MSSQL_DATABASE")
 USERNAME = os.getenv("MSSQL_USERNAME")
 PASSWORD = os.getenv("MSSQL_PASSWORD")
 DRIVER = os.getenv("MSSQL_DRIVER", "ODBC Driver 18 for SQL Server")
-PORT = os.getenv("MSSQL_PORT")
 ENCRYPT = os.getenv("SQL_ENCRYPT", "yes")
-EXTRA_OPTIONS = os.getenv("SQL_ODBC_EXTRA", "")
 
 # The driver might use a self-signed certificate. TRUST_CERT lets you opt in.
 TRUST_CERT = os.getenv("TRUST_SERVER_CERTIFICATE", "false").lower() == "true"
@@ -32,19 +30,15 @@ if not all([SERVER, DATABASE, USERNAME, PASSWORD]):
     raise RuntimeError("Missing database credentials. Check your .env file.")
 
 # Build the connection string. urllib.parse.quote_plus handles special characters.
-server_target = f"{SERVER},{PORT}" if PORT else SERVER
-extra_options = EXTRA_OPTIONS.strip().strip(";")
-
 params = urllib.parse.quote_plus(
     f"DRIVER={{{DRIVER}}};"
-    f"SERVER={server_target};"
+    f"SERVER={SERVER};"
     f"DATABASE={DATABASE};"
     f"UID={USERNAME};"
     f"PWD={PASSWORD};"
     f"Encrypt={ENCRYPT};"
     f"TrustServerCertificate={'Yes' if TRUST_CERT else 'No'};"
     "Connection Timeout=10;"
-    f"{extra_options + ';' if extra_options else ''}"
 )
 
 # create_engine builds a SQLAlchemy Engine object that manages the connection.
@@ -103,7 +97,7 @@ except OperationalError as exc:
         "Check these items:\n"
         "- Is the server hostname in MSSQL_SERVER correct?\n"
         "- Are you connected to the required VPN or campus network?\n"
-        "- Is the SQL Server reachable on the configured port?\n"
+        "- Is the SQL Server reachable from your current network?\n"
         "- Is MSSQL_DRIVER installed exactly as written in .env?\n"
         "- If the database uses a self-signed certificate, set TRUST_SERVER_CERTIFICATE=true.\n\n"
         f"Original error:\n{exc}"
