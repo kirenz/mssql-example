@@ -47,6 +47,8 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
 
    Open the new `.env` file and replace the placeholder values with the SQL Server hostname, database, username, password, driver, and any TLS requirements provided by your instructor.
 
+   If you work with the SOPRA CRUD project, also fill `APP_USER` with your HdM account name. The read-only examples in this repository do not use `APP_USER`, but the full SOPRA app writes it into audit columns during insert and update operations.
+
 5. Test the SQL example script (you may use the integrated terminal in VS Code or your previous terminal window)  
 
    ```bash
@@ -79,6 +81,8 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
 - `sql_example_sopra.py` – SOPRA-specific script that reads the B2B discount overview and customer list of values.
 
 - `.env.example` – template with placeholders for your connection parameters. 
+
+  `APP_USER` is optional in this repository because the examples only read data. It becomes relevant in the full SOPRA CRUD app.
 
 - `pyproject.toml` – dependency definition for `uv sync`. Don't edit this file directly; use `uv add <package>` to add new packages.
 
